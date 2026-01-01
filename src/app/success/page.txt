@@ -1,0 +1,13 @@
+export const dynamic = "force-dynamic";
+
+export default function SuccessPage() {
+  return (
+    <main className="min-h-[60vh] flex flex-col items-center justify-center px-6 py-16">
+      <h1 className="text-3xl font-semibold mb-3">Paiement confirmé ✅</h1>
+      <p className="opacity-80 mb-6 text-center">
+        Merci ! Votre abonnement est actif. Vous pouvez maintenant profiter du catalogue.
+      </p>
+      <a href="/" className="underline">Retour à l’accueil</a>
+    </main>
+  );
+}
