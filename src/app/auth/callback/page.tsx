@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-// src/app/auth/callback/page.tsx
-export const dynamic = 'force-dynamic';
-=======
->>>>>>> dc31a71 (fix: client components build on render)
 "use client";
 
+// src/app/auth/callback/page.tsx
 export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
