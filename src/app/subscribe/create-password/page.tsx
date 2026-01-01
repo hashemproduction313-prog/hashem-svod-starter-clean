@@ -1,5 +1,6 @@
-export const dynamic = 'force-dynamic';
 "use client";
+
+export const dynamic = "force-dynamic";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
@@ -23,11 +24,6 @@ export default function CreatePasswordPage() {
     const p1 = pass1.current?.value || "";
     const p2 = pass2.current?.value || "";
 
-<<<<<<< HEAD
-    if (!email) { setErr("E-mail manquant."); return; }
-    if (p1.length < 8) { setErr("Mot de passe : minimum 8 caractères."); return; }
-    if (p1 !== p2) { setErr("Les mots de passe ne correspondent pas."); return; }
-=======
     if (!email) {
       setErr("E-mail manquant.");
       return;
@@ -40,7 +36,6 @@ export default function CreatePasswordPage() {
       setErr("Les mots de passe ne correspondent pas.");
       return;
     }
->>>>>>> dc31a71 (fix: client components build on render)
 
     setLoading(true);
     try {
@@ -49,6 +44,7 @@ export default function CreatePasswordPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password: p1 }),
       });
+
       const data = await resp.json().catch(() => ({}));
 
       if (!resp.ok || data?.ok !== true) {
@@ -56,11 +52,7 @@ export default function CreatePasswordPage() {
         return;
       }
 
-<<<<<<< HEAD
-      // Succès → on passe aux offres
-=======
       // ✅ Succès → on passe aux offres
->>>>>>> dc31a71 (fix: client components build on render)
       router.push(`/subscribe/plans?email=${encodeURIComponent(email)}`);
     } catch (e: any) {
       setErr(e?.message || "Erreur réseau.");
@@ -73,13 +65,9 @@ export default function CreatePasswordPage() {
     <main className="container" style={{ maxWidth: 900 }}>
       <section className="glass-panel" style={{ margin: "34px auto" }}>
         <h1 className="auth-title">Créer un mot de passe</h1>
-<<<<<<< HEAD
-        <p className="auth-sub">Ton e-mail : <strong>{email || "—"}</strong></p>
-=======
         <p className="auth-sub">
           Votre e-mail : <strong>{email || "—"}</strong>
         </p>
->>>>>>> dc31a71 (fix: client components build on render)
 
         <form onSubmit={submit} style={{ marginTop: 14 }}>
           <div style={{ display: "grid", gap: 10, maxWidth: 680 }}>
@@ -95,11 +83,7 @@ export default function CreatePasswordPage() {
               <button
                 type="button"
                 className="btn-ghost"
-<<<<<<< HEAD
-                onClick={() => setShow(s => !s)}
-=======
                 onClick={() => setShow((s) => !s)}
->>>>>>> dc31a71 (fix: client components build on render)
                 disabled={loading}
               >
                 {show ? "Masquer" : "Afficher"}
@@ -126,21 +110,20 @@ export default function CreatePasswordPage() {
             <button className="btn-cta" type="submit" disabled={loading}>
               {loading ? "Enregistrement..." : "Terminer l’inscription"}
             </button>
-            <a className="btn-ghost-secondary" href={`/subscribe/inbox?email=${encodeURIComponent(email)}`}>
+            <a
+              className="btn-ghost-secondary"
+              href={`/subscribe/inbox?email=${encodeURIComponent(email)}`}
+            >
               Utiliser le lien e-mail à la place
             </a>
           </div>
 
           <p className="notice" style={{ marginTop: 12 }}>
-<<<<<<< HEAD
-            En continuant, vous acceptez les Conditions d’utilisation et la Politique de confidentialité de <strong>Hashem Productions</strong>.
-=======
             En continuant, vous acceptez les Conditions d’utilisation et la
             Politique de confidentialité de{" "}
             <strong>Hashem Productions</strong>. Après cette étape, vous
             pourrez choisir votre offre puis régler votre abonnement en toute
             sécurité.
->>>>>>> dc31a71 (fix: client components build on render)
           </p>
         </form>
       </section>
