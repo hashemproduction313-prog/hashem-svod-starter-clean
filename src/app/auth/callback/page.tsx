@@ -1,7 +1,8 @@
 "use client";
 
-// src/app/auth/callback/page.tsx
 export const dynamic = "force-dynamic";
+
+// src/app/auth/callback/page.tsx
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase/browser";
