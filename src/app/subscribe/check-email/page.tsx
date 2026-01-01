@@ -1,7 +1,8 @@
 "use client";
 
-// src/app/subscribe/check-email/page.tsx
 export const dynamic = "force-dynamic";
+
+// src/app/subscribe/check-email/page.tsx
 
 import { useState, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
