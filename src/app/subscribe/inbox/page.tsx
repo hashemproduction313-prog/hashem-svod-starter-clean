@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-// src/app/subscribe/inbox/page.tsx
-export const dynamic = 'force-dynamic';
-=======
->>>>>>> dc31a71 (fix: client components build on render)
 "use client";
+
+// src/app/subscribe/inbox/page.tsx
+export const dynamic = "force-dynamic";
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
-
-export const dynamic = "force-dynamic";
 
 export default function SubscribeInboxPage() {
   const router = useRouter();
@@ -24,9 +20,11 @@ export default function SubscribeInboxPage() {
       setErr("Adresse e-mail manquante.");
       return;
     }
+
     setLoading(true);
     setErr(null);
     setNote(null);
+
     try {
       const resp = await fetch("/api/auth/send-magic-link", {
         method: "POST",
@@ -36,13 +34,16 @@ export default function SubscribeInboxPage() {
           redirectTo: "/subscribe/create-password",
         }),
       });
+
       const data = await resp.json().catch(() => ({}));
+
       if (!resp.ok || data?.ok !== true) {
         setErr(
           data?.error || "Impossible de renvoyer le lien pour le moment."
         );
         return;
       }
+
       setNote("Lien renvoyé ✅ — vérifie ta boîte de réception (et tes spams).");
     } catch (e: any) {
       setErr(e?.message || "Erreur réseau.");
@@ -114,6 +115,7 @@ export default function SubscribeInboxPage() {
               {note}
             </p>
           )}
+
           {err && (
             <p className="email-error" style={{ marginTop: 8 }}>
               {err}
