@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-// src/app/subscribe/check-email/page.tsx
-export const dynamic = 'force-dynamic';
-=======
->>>>>>> dc31a71 (fix: client components build on render)
 "use client";
 
+// src/app/subscribe/check-email/page.tsx
 export const dynamic = "force-dynamic";
 
 import { useState, useMemo } from "react";
