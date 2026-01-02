@@ -1,10 +1,8 @@
-// src/app/subscribe/page.tsx
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-export const dynamic = "force-dynamic";
 
 export default function SubscribeEmailStep() {
   const router = useRouter();
@@ -40,7 +38,6 @@ export default function SubscribeEmailStep() {
 
     setLoading(true);
     try {
-      // Étape suivante : création du mot de passe
       router.push(`/subscribe/create-password?email=${encodeURIComponent(v)}`);
     } finally {
       setLoading(false);
@@ -49,7 +46,6 @@ export default function SubscribeEmailStep() {
 
   return (
     <>
-      {/* HERO + carte centrale */}
       <section
         className="hero-modern"
         style={{ paddingTop: 40, paddingBottom: 60 }}
