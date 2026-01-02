@@ -1,12 +1,10 @@
-// src/app/subscribe/payment/page.tsx
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { PLANS, normalizePlanId } from "@/data/plans";
-
-export const dynamic = "force-dynamic";
 
 const TIER_BY_PLAN: Record<string, "standard_ads" | "standard" | "premium"> = {
   ad: "standard_ads",
@@ -50,8 +48,7 @@ export default function PaymentPage() {
 
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
-  const [selectedMethod, setSelectedMethod] =
-    useState<MethodId>("card");
+  const [selectedMethod, setSelectedMethod] = useState<MethodId>("card");
 
   const planParam = search.get("plan") || "standard";
   const email = (search.get("email") || "").trim();
