@@ -1,12 +1,11 @@
-// src/app/subscribe/welcome/page.tsx
 "use client";
+
+export const dynamic = "force-dynamic";
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { PLANS, normalizePlanId } from "@/data/plans";
-
-export const dynamic = "force-dynamic";
 
 export default function WelcomePage() {
   const search = useSearchParams();
@@ -14,14 +13,12 @@ export default function WelcomePage() {
   const planId = normalizePlanId(search.get("plan"));
   const plan = PLANS[planId];
 
-<<<<<<< HEAD
-=======
-  // (optionnel) Tu as aussi maintenant access à :
+  // (optionnel) Tu as aussi maintenant accès à :
   // const sessionId = search.get("session_id");
 
->>>>>>> dc31a71 (fix: client components build on render)
   // ✅ Envoi du mail une seule fois (évite le double-envoi en React StrictMode)
   const sentRef = useRef(false);
+
   useEffect(() => {
     if (sentRef.current) return;
     sentRef.current = true;
@@ -42,14 +39,23 @@ export default function WelcomePage() {
         <h1 className="auth-title">Bienvenue sur Hashem Productions</h1>
         <p className="auth-sub">
           Votre abonnement <strong>{plan.name}</strong> est prêt.
-          {email && <> Nous avons lié le compte à <strong>{email}</strong>.</>}
+          {email && (
+            <>
+              {" "}
+              Nous avons lié le compte à <strong>{email}</strong>.
+            </>
+          )}
         </p>
 
         <div style={{ marginTop: 18 }}>
           <Link href="/" className="btn-cta">
             Accéder à l’accueil
           </Link>
-          <Link href="/account" className="btn-ghost" style={{ marginLeft: 10 }}>
+          <Link
+            href="/account"
+            className="btn-ghost"
+            style={{ marginLeft: 10 }}
+          >
             Gérer mon compte
           </Link>
         </div>
