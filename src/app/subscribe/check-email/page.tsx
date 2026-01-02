@@ -1,7 +1,5 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
 // src/app/subscribe/check-email/page.tsx
 
 import { useState, useMemo } from "react";
