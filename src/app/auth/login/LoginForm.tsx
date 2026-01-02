@@ -13,23 +13,6 @@ export default function LoginForm() {
       >
         <div className="hero-overlay" />
 
-<<<<<<< HEAD
-        <form action="/api/auth/login" method="post" className="space-y-4">
-          <div className="grid gap-2">
-            <label htmlFor="email" className="text-sm font-medium">Email</label>
-            <input id="email" name="email" type="email" required className="border rounded px-3 py-2 w-full bg-white/80" placeholder="ton@email.com" autoComplete="email" />
-          </div>
-
-          <div className="grid gap-2">
-            <label htmlFor="password" className="text-sm font-medium">Mot de passe</label>
-            <input id="password" name="password" type="password" required className="border rounded px-3 py-2 w-full bg-white/80" placeholder="••••••••" autoComplete="current-password" />
-          </div>
-
-          <button type="submit" className="w-full rounded-xl px-4 py-2 font-semibold border hover:bg-black/5 transition">
-            Se connecter
-          </button>
-        </form>
-=======
         <div
           className="hero-content"
           style={{
@@ -57,7 +40,6 @@ export default function LoginForm() {
                 <strong>Hashem Productions</strong>.
               </p>
             </header>
->>>>>>> dc31a71 (fix: client components build on render)
 
             {/* FORMULAIRE */}
             <form
@@ -139,7 +121,7 @@ export default function LoginForm() {
                   fontSize: ".9rem",
                 }}
               >
-                Tu peux aussi t’abonner directement via la page{" "}
+                Tu peux aussi t’abonner via la page{" "}
                 <Link href="/subscribe" className="link">
                   Abonnements
                 </Link>

@@ -15,14 +15,11 @@ export default function SubscribeEmailStep() {
   }, []);
 
   // Préremplir l’input si ?email= est présent
-<<<<<<< HEAD
-  const emailFromQS = useMemo(() => (search.get("email") ?? "").trim(), [search]);
-=======
   const emailFromQS = useMemo(
     () => (search.get("email") ?? "").trim(),
     [search]
   );
->>>>>>> dc31a71 (fix: client components build on render)
+
   const [email, setEmail] = useState(emailFromQS);
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -43,13 +40,8 @@ export default function SubscribeEmailStep() {
 
     setLoading(true);
     try {
-<<<<<<< HEAD
-      // Étape suivante : choix de l’offre (même flux qu’avant)
-      router.push(`/subscribe/plans?email=${encodeURIComponent(v)}`);
-=======
-      // 🔁 Étape suivante : création du mot de passe
+      // Étape suivante : création du mot de passe
       router.push(`/subscribe/create-password?email=${encodeURIComponent(v)}`);
->>>>>>> dc31a71 (fix: client components build on render)
     } finally {
       setLoading(false);
     }
@@ -57,15 +49,11 @@ export default function SubscribeEmailStep() {
 
   return (
     <>
-      {/* HERO + carte centrale comme sur ton visuel 2 */}
-<<<<<<< HEAD
-      <section className="hero-modern" style={{ paddingTop: 40, paddingBottom: 60 }}>
-=======
+      {/* HERO + carte centrale */}
       <section
         className="hero-modern"
         style={{ paddingTop: 40, paddingBottom: 60 }}
       >
->>>>>>> dc31a71 (fix: client components build on render)
         <div className="hero-overlay" />
 
         <div
@@ -94,13 +82,9 @@ export default function SubscribeEmailStep() {
                 margin: "2px 0 10px 0",
               }}
             >
-<<<<<<< HEAD
-              Plateforme de Streaming<br />Spirituel
-=======
               Plateforme de Streaming
               <br />
               Spirituel
->>>>>>> dc31a71 (fix: client components build on render)
             </h1>
 
             <p
@@ -114,11 +98,6 @@ export default function SubscribeEmailStep() {
               À partir de <strong>7,99 €</strong>/mois. Annulable à tout moment.
             </p>
 
-            {/* Formulaire aligné input + bouton (style visuel 2) */}
-<<<<<<< HEAD
-            <form onSubmit={onSubmit} noValidate style={{ display: "flex", gap: 12, maxWidth: 760 }}>
-              <label htmlFor="email" className="sr-only">Adresse e-mail</label>
-=======
             <form
               onSubmit={onSubmit}
               noValidate
@@ -127,7 +106,7 @@ export default function SubscribeEmailStep() {
               <label htmlFor="email" className="sr-only">
                 Adresse e-mail
               </label>
->>>>>>> dc31a71 (fix: client components build on render)
+
               <input
                 id="email"
                 type="email"
@@ -157,12 +136,6 @@ export default function SubscribeEmailStep() {
               </button>
             </form>
 
-            {/* Lignes d’aide comme sur le visuel 2 */}
-<<<<<<< HEAD
-            <div style={{ marginTop: 10, color: "var(--muted)", fontSize: ".95rem" }}>
-              {err ? (
-                <p id="email-error" style={{ color: "#ffb3b3" }}>{err}</p>
-=======
             <div
               style={{
                 marginTop: 10,
@@ -174,20 +147,15 @@ export default function SubscribeEmailStep() {
                 <p id="email-error" style={{ color: "#ffb3b3" }}>
                   {err}
                 </p>
->>>>>>> dc31a71 (fix: client components build on render)
               ) : (
                 <p>L’adresse e-mail est obligatoire.</p>
               )}
+
               <p style={{ marginTop: 8 }}>
-<<<<<<< HEAD
-                En cliquant sur <strong>S’abonner</strong>, vous acceptez de recevoir un e-mail
-                pour compléter la configuration de votre compte <strong>Hashem Productions</strong>.
-=======
                 En cliquant sur <strong>S’abonner</strong>, vous créez votre
                 compte <strong>Hashem Productions</strong>. Vous pourrez ensuite
                 définir votre mot de passe, choisir votre offre et régler votre
                 abonnement en toute sécurité.
->>>>>>> dc31a71 (fix: client components build on render)
               </p>
             </div>
           </div>

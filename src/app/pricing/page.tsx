@@ -6,11 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 const ORDER: PlanId[] = ["ad", "standard", "premium"];
 
-<<<<<<< HEAD
-/** L’API /api/checkout attend ces clés-là */
-=======
 /** Correspondance plan -> tier attendu par l’API */
->>>>>>> dc31a71 (fix: client components build on render)
 const TIER_BY_PLAN: Record<PlanId, "standard_ads" | "standard" | "premium"> = {
   ad: "standard_ads",
   standard: "standard",
@@ -37,19 +33,12 @@ export default function PricingPage() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-<<<<<<< HEAD
-        // on envoie le tier attendu par l’API ; l’email est optionnel
         body: JSON.stringify({ tier: TIER_BY_PLAN[plan], email }),
       });
 
-      // On tente en JSON d’abord, sinon on garde le texte pour diagnostiquer
-=======
-        body: JSON.stringify({ tier: TIER_BY_PLAN[plan], email }),
-      });
-
->>>>>>> dc31a71 (fix: client components build on render)
       let data: any = null;
       let text = "";
+
       try {
         data = await res.clone().json();
       } catch {
@@ -58,23 +47,15 @@ export default function PricingPage() {
 
       if (!res.ok) {
         const msg =
-<<<<<<< HEAD
           (data && (data.error || data.message)) ||
           (text || `HTTP ${res.status}`);
-=======
-          (data && (data.error || data.message)) || (text || `HTTP ${res.status}`);
->>>>>>> dc31a71 (fix: client components build on render)
         alert(`Erreur paiement: ${msg}`);
         return;
       }
 
       const url = data?.url;
       if (typeof url === "string" && url.startsWith("http")) {
-<<<<<<< HEAD
-        window.location.href = url; // redirection Stripe Checkout
-=======
         window.location.href = url;
->>>>>>> dc31a71 (fix: client components build on render)
       } else {
         alert("Réponse inattendue du serveur (pas d’URL de paiement).");
       }
@@ -108,7 +89,7 @@ export default function PricingPage() {
               >
                 <header className="plan-head">
                   <div className="plan-name">
-                    {p.name}{" "}
+                    {p.name}
                     {recommended && (
                       <span className="badge" style={{ marginLeft: 8 }}>
                         Populaire
