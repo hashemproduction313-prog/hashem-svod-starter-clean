@@ -1,6 +1,5 @@
 "use client";
 
-// src/app/subscribe/inbox/page.tsx
 export const dynamic = "force-dynamic";
 
 import { useSearchParams, useRouter } from "next/navigation";
