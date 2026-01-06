@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 
+console.log("🔥 CHECKOUT ROUTE UPDATED - STRIPE FIX ACTIVE");
+
+
 /**
  * Mapping STRICT des tiers vers les PRICE_ID Stripe
  * ⚠️ Les clés DOIVENT correspondre exactement aux tiers envoyés par le frontend
