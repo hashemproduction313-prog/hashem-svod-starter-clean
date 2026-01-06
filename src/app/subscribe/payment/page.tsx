@@ -14,30 +14,25 @@ const TIER_BY_PLAN: Record<string, "standard_ads" | "standard" | "premium"> = {
 
 type MethodId = "card" | "mobile" | "paypal" | "gift";
 
-const METHODS: {
-  id: MethodId;
-  title: string;
-  subtitle: string;
-  badge?: string;
-}[] = [
+const METHODS = [
   {
-    id: "card",
+    id: "card" as const,
     title: "Carte de crédit ou de débit",
     subtitle: "Visa, MasterCard…",
     badge: "Recommandé",
   },
   {
-    id: "mobile",
+    id: "mobile" as const,
     title: "Ajouter à la facture mobile",
     subtitle: "Opérateur compatible requis",
   },
   {
-    id: "paypal",
+    id: "paypal" as const,
     title: "PayPal",
     subtitle: "Paiement sécurisé",
   },
   {
-    id: "gift",
+    id: "gift" as const,
     title: "Code cadeau",
     subtitle: "Utilisez un code",
   },
@@ -72,16 +67,23 @@ export default function PaymentPage() {
         }),
       });
 
-      const data = await resp.json().catch(() => ({}));
+      const data = await resp.json().catch(() => null);
+
+      if (!resp.ok) {
+        console.error("Checkout API error:", data);
+        setErr(data?.error || "Erreur serveur lors du paiement.");
+        return;
+      }
 
       if (data?.url) {
-        window.location.href = data.url;
+        window.location.assign(data.url);
       } else {
+        console.error("Checkout response without URL:", data);
         setErr("Erreur de redirection vers la page de paiement.");
       }
     } catch (e: any) {
-      console.error(e);
-      setErr(e?.message || "Impossible de lancer le paiement.");
+      console.error("Checkout exception:", e);
+      setErr("Impossible de lancer le paiement.");
     } finally {
       setLoading(false);
     }
@@ -93,10 +95,7 @@ export default function PaymentPage() {
 
   return (
     <main className="container" style={{ maxWidth: 1100 }}>
-      <section
-        className="hero-modern"
-        style={{ paddingTop: 40, paddingBottom: 70 }}
-      >
+      <section className="hero-modern" style={{ paddingTop: 40, paddingBottom: 70 }}>
         <div className="hero-overlay" />
 
         <div className="hero-content" style={{ maxWidth: 960, margin: "0 auto" }}>
@@ -150,9 +149,7 @@ export default function PaymentPage() {
               </button>
             </div>
 
-            {err && (
-              <p style={{ color: "#ffb3b3", marginTop: 12 }}>{err}</p>
-            )}
+            {err && <p style={{ color: "#ffb3b3", marginTop: 12 }}>{err}</p>}
           </div>
         </div>
       </section>
