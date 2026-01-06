@@ -6,33 +6,34 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { PLANS, normalizePlanId } from "@/data/plans";
 
-const TIER_BY_PLAN: Record<string, "standard_ads" | "standard" | "premium"> = {
+type Tier = "standard_ads" | "standard" | "premium";
+type MethodId = "card" | "mobile" | "paypal" | "gift";
+
+const TIER_BY_PLAN: Record<string, Tier> = {
   ad: "standard_ads",
   standard: "standard",
   premium: "premium",
 };
 
-type MethodId = "card" | "mobile" | "paypal" | "gift";
-
 const METHODS = [
   {
-    id: "card" as const,
+    id: "card" as MethodId,
     title: "Carte de crédit ou de débit",
     subtitle: "Visa, MasterCard…",
     badge: "Recommandé",
   },
   {
-    id: "mobile" as const,
+    id: "mobile" as MethodId,
     title: "Ajouter à la facture mobile",
     subtitle: "Opérateur compatible requis",
   },
   {
-    id: "paypal" as const,
+    id: "paypal" as MethodId,
     title: "PayPal",
     subtitle: "Paiement sécurisé",
   },
   {
-    id: "gift" as const,
+    id: "gift" as MethodId,
     title: "Code cadeau",
     subtitle: "Utilisez un code",
   },
@@ -45,12 +46,15 @@ export default function PaymentPage() {
   const [err, setErr] = useState<string | null>(null);
   const [selectedMethod, setSelectedMethod] = useState<MethodId>("card");
 
-  const planParam = search.get("plan") || "standard";
-  const email = (search.get("email") || "").trim();
-
-  const planId = normalizePlanId(planParam);
+  // 🔒 NORMALISATION UNIQUE
+  const rawPlan = search.get("plan") || "standard";
+  const planId = normalizePlanId(rawPlan);
   const plan = PLANS[planId];
-  const tier = TIER_BY_PLAN[planParam] ?? "standard";
+
+  // ✅ tier dérivé UNIQUEMENT du plan normalisé
+  const tier: Tier = TIER_BY_PLAN[planId] ?? "standard";
+
+  const email = (search.get("email") || "").trim();
 
   async function handleContinue() {
     setLoading(true);
@@ -67,7 +71,7 @@ export default function PaymentPage() {
         }),
       });
 
-      const data = await resp.json().catch(() => null);
+      const data = await resp.json();
 
       if (!resp.ok) {
         console.error("Checkout API error:", data);
@@ -76,12 +80,12 @@ export default function PaymentPage() {
       }
 
       if (data?.url) {
-        window.location.assign(data.url);
+        window.location.href = data.url;
       } else {
         console.error("Checkout response without URL:", data);
         setErr("Erreur de redirection vers la page de paiement.");
       }
-    } catch (e: any) {
+    } catch (e) {
       console.error("Checkout exception:", e);
       setErr("Impossible de lancer le paiement.");
     } finally {
@@ -149,7 +153,7 @@ export default function PaymentPage() {
               </button>
             </div>
 
-            {err && <p style={{ color: "#ffb3b3", marginTop: 12 }}>{err}</p>}
+            {err && <p style={{ color: "#ff6b6b", marginTop: 12 }}>{err}</p>}
           </div>
         </div>
       </section>
