@@ -4,29 +4,44 @@ import Link from "next/link";
 
 export default function ContactPage() {
   return (
-    <section className="hero-modern" style={{ paddingTop: 50, paddingBottom: 80 }}>
-      <div className="hero-overlay" />
-
-      <div className="hero-content" style={{ maxWidth: 900, margin: "0 auto" }}>
+    <section
+      className="hero-modern"
+      style={{
+        paddingTop: 80,
+        paddingBottom: 100,
+        minHeight: "100vh",
+      }}
+    >
+      {/* CONTENU */}
+      <div
+        className="hero-content"
+        style={{
+          maxWidth: 900,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
         <div
           className="glass-panel"
           style={{
-            background: "rgba(0,0,0,.80)",
+            background: "rgba(0,0,0,.85)",
             borderRadius: 22,
-            padding: "32px 30px",
+            padding: "36px 32px",
           }}
         >
           <h1 className="auth-title">Contact & Ressources</h1>
 
-          <p className="auth-sub" style={{ marginBottom: 24 }}>
+          <p className="auth-sub" style={{ marginBottom: 32 }}>
             Retrouvez ici l’ensemble des ressources officielles, enseignements,
             chaînes et moyens de contact liés à la Religion Ahmadi et à
-            l’enseignement du Qa’im (de Lui est la Paix).
+            l’enseignement du Qa’im Abdullah Hashem Aba Al-Sadiq (de Lui est la
+            Paix).
           </p>
 
           {/* LIVRES */}
-          <section style={{ marginBottom: 28 }}>
-            <h2 style={{ color: "var(--gold)", marginBottom: 8 }}>
+          <section style={{ marginBottom: 32 }}>
+            <h2 style={{ color: "var(--gold)", marginBottom: 10 }}>
               📚 Ouvrages en libre téléchargement
             </h2>
             <p>
@@ -50,8 +65,8 @@ export default function ContactPage() {
           </section>
 
           {/* VIDÉOS */}
-          <section style={{ marginBottom: 28 }}>
-            <h2 style={{ color: "var(--gold)", marginBottom: 8 }}>
+          <section style={{ marginBottom: 32 }}>
+            <h2 style={{ color: "var(--gold)", marginBottom: 10 }}>
               🎥 Vidéos officielles
             </h2>
             <p>
@@ -71,8 +86,8 @@ export default function ContactPage() {
           </section>
 
           {/* TELEGRAM */}
-          <section style={{ marginBottom: 28 }}>
-            <h2 style={{ color: "var(--gold)", marginBottom: 8 }}>
+          <section style={{ marginBottom: 32 }}>
+            <h2 style={{ color: "var(--gold)", marginBottom: 10 }}>
               📣 Chaîne Telegram
             </h2>
             <p>Rejoignez notre chaîne Telegram officielle :</p>
@@ -89,13 +104,11 @@ export default function ContactPage() {
           </section>
 
           {/* CHAÎNE ARABE */}
-          <section style={{ marginBottom: 28 }}>
-            <h2 style={{ color: "var(--gold)", marginBottom: 8 }}>
+          <section style={{ marginBottom: 32 }}>
+            <h2 style={{ color: "var(--gold)", marginBottom: 10 }}>
               🌍 Chaîne arabophone
             </h2>
-            <p>
-              Découvrez la chaîne arabophone officielle :
-            </p>
+            <p>Découvrez la chaîne arabophone officielle :</p>
             <p>
               <a
                 href="https://www.youtube.com/@themahdihasappearedtvchannel"
@@ -109,13 +122,12 @@ export default function ContactPage() {
           </section>
 
           {/* CONTACT */}
-          <section style={{ marginBottom: 28 }}>
-            <h2 style={{ color: "var(--gold)", marginBottom: 8 }}>
+          <section style={{ marginBottom: 32 }}>
+            <h2 style={{ color: "var(--gold)", marginBottom: 10 }}>
               ✉️ Nous contacter
             </h2>
-            <p>
-              Depuis la plateforme officielle :
-            </p>
+
+            <p>Depuis la plateforme officielle :</p>
             <p>
               <a
                 href="https://theahmadireligion.org/outreach/"
@@ -127,7 +139,7 @@ export default function ContactPage() {
               </a>
             </p>
 
-            <p style={{ marginTop: 8 }}>
+            <p style={{ marginTop: 10 }}>
               Par email :
               <br />
               <a
@@ -141,7 +153,7 @@ export default function ContactPage() {
 
           {/* DON */}
           <section>
-            <h2 style={{ color: "var(--gold)", marginBottom: 8 }}>
+            <h2 style={{ color: "var(--gold)", marginBottom: 10 }}>
               🤍 Soutenir l’État de Justice Divine
             </h2>
             <p>
@@ -160,7 +172,7 @@ export default function ContactPage() {
           </section>
 
           {/* RETOUR */}
-          <div style={{ marginTop: 32 }}>
+          <div style={{ marginTop: 36 }}>
             <Link href="/" className="btn-ghost">
               ← Retour à l’accueil
             </Link>
